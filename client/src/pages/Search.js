@@ -5,6 +5,7 @@ import Input from "../components/input";
 import Result from "../components/results";
 import Footer from "../components/footer";
 import API from "../utils/API";
+import { UserProvider } from "../utils/BookContext";
 
 function Search() {
 
@@ -15,33 +16,39 @@ function Search() {
         e.preventDefault();
         // const { value } = e.target;
         API.getBooks().then(res => {
-            console.log(res);
-            //     let dataInit = [];
-            // for (let i = 0; i < res.data.results.length; i++) {
-            //     let book = {
-            //         authors: res.data.results[i],
-            //         description: res.data.results[i],
-            //         image: res.data.results[i],
-            //         link: res.data.results[i],
-            //         title: res.data.results[i]
+            // console.log(res.data.items[0].id);
+            let dataInit = [];
+            for (let i = 0; i < res.data.items.length; i++) {
+                let book = {
+                    id: res.data.items[i].id,
+                    authors: res.data.items[i].volumeInfo.authors,
+                    description: res.data.items[i].volumeInfo.description,
+                    image: res.data.items[i].volumeInfo.imageLinks.smallThumbnail,
+                    link: res.data.items[i].volumeInfo.previewLink,
+                    title: res.data.items[i].volumeInfo.title
 
-            //     }
-            //     dataInit.push(book);
-            // };
-            // setSearchedBooks(dataInit);
+                }
+                dataInit.push(book);
+            };
+            setSearchedBooks(dataInit);
+            console.log(searchedBooks);
         });
     }
 
 
 
     return (
+
         <div className="Search container-sm">
             <Nav></Nav>
             <Main></Main>
             <Input handleFormSubmit={handleFormSubmit}></Input>
-            <Result></Result>
+            <UserProvider value={searchedBooks}>
+                <Result></Result>
+            </UserProvider>
             <Footer></Footer>
         </div>
+
     );
 }
 

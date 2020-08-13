@@ -2,6 +2,7 @@ import React, { createContext, useContext } from "react";
 
 const BookContext = createContext(
     {
+        id: "",
         authors: [],
         description: "",
         image: "",
