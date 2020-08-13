@@ -11,9 +11,9 @@ function Result() {
                     <button>View</button>
                     <button>Save</button>
                 </div>
-                <p className="mt-3 mb-3 text-left">Written By Author</p><sr />
+                <p className="mt-3 mb-3 text-left">Written By Author</p><hr />
                 <div className="row">
-                    <image className="col-3"></image>
+                    <img className="col-3"></img>
                     <p className="col-9">description</p>
                 </div>
             </div>
