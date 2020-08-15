@@ -14,21 +14,33 @@ function Search() {
 
     function handleFormSubmit(e) {
         e.preventDefault();
-        // const { value } = e.target;
-        API.getBooks().then(res => {
-            // console.log(res.data.items[0].id);
+        const { value } = e.target.bookName;
+        const searchTerm = value.replace(/ /g, "");
+        API.getBooks(searchTerm).then(res => {
             let dataInit = [];
             for (let i = 0; i < res.data.items.length; i++) {
-                let book = {
-                    id: res.data.items[i].id,
-                    authors: res.data.items[i].volumeInfo.authors,
-                    description: res.data.items[i].volumeInfo.description,
-                    image: res.data.items[i].volumeInfo.imageLinks.smallThumbnail,
-                    link: res.data.items[i].volumeInfo.previewLink,
-                    title: res.data.items[i].volumeInfo.title
-
+                if (!res.data.items[i].volumeInfo.imageLinks) {
+                    let book = {
+                        id: res.data.items[i].id,
+                        authors: res.data.items[i].volumeInfo.authors,
+                        description: res.data.items[i].volumeInfo.description,
+                        image: "https://upload.wikimedia.org/wikipedia/en/6/60/No_Picture.jpg",
+                        link: res.data.items[i].volumeInfo.previewLink,
+                        title: res.data.items[i].volumeInfo.title
+                    }
+                    dataInit.push(book);
+                } else {
+                    let book = {
+                        id: res.data.items[i].id,
+                        authors: res.data.items[i].volumeInfo.authors,
+                        description: res.data.items[i].volumeInfo.description,
+                        image: res.data.items[i].volumeInfo.imageLinks.smallThumbnail,
+                        link: res.data.items[i].volumeInfo.previewLink,
+                        title: res.data.items[i].volumeInfo.title
+                    }
+                    dataInit.push(book);
                 }
-                dataInit.push(book);
+                // dataInit.push(book);
             };
             setSearchedBooks(dataInit);
             console.log(searchedBooks);

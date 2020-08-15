@@ -8,19 +8,23 @@ function Result() {
     // const { id, authors, description, image, link, title } = useUserContext();
     return (
         <div className="container card mt-3">
-            <p className="mt-3 mb-3 text-left">Results</p>
+            <p className="mt-3 mb-3 text-left">Results : {books.length} Books</p>
 
             {books.map((book, index) => {
                 return (
                     <div className="container card mt-3 mb-3" key={index}>
                         <div className="container">
-                            <p className="mt-3 mb-3 text-left">{book.title}</p>
-                            <button>View</button>
-                            <button>Save</button>
+                            <div className="row">
+                                <p className="mt-3 mb-3 text-left font-weight-bold col-6">{book.title}</p>
+                                <div className="mt-3 mb-3 col-6">
+                                    <button className="mr-3">View</button>
+                                    <button>Save</button>
+                                </div>
+                            </div>
+                            <p className="mt-3 mb-3 text-left font-italic">Written By {book.authors}</p><hr />
                         </div>
-                        <p className="mt-3 mb-3 text-left">Written By {book.authors}</p><hr />
                         <div className="row">
-                            <img className="col-3" src={book.image} alt={index} />
+                            <img className="col-3 mb-3" src={book.image} alt={index} />
                             <p className="col-9">{book.description}</p>
                         </div>
                     </div>
