@@ -8,6 +8,13 @@ function Result() {
 
     // const { id, authors, description, image, link, title } = useUserContext();
 
+    function saveBtn(e) {
+        e.preventDefault();
+        const { value } = e.target;
+        // console.log(e.target.value);
+        console.log(books[value]);
+    }
+
     function renderResult() {
         if (!books[0].id) {
             return (
@@ -27,13 +34,13 @@ function Result() {
                     <p className="mt-3 mb-3 text-left">Results : {books.length} Books</p>
                     {books.map((book, index) => {
                         return (
-                            <div className="container card mt-3 mb-3" key={index}>
+                            <div className="container card mt-3 mb-3" key={book.id} value={index}>
                                 <div className="container">
                                     <div className="row">
                                         <p className="mt-3 mb-3 text-left font-weight-bold col-6">{book.title}</p>
                                         <div className="mt-3 mb-3 col-6">
                                             <a className="btn mr-3 border" href={book.link} target="_blank">View</a>
-                                            <button className="btn mr-3">Save</button>
+                                            <button className="btn mr-3" value={index} onClick={saveBtn}>Save</button>
                                         </div>
                                     </div>
                                     <p className="mt-3 mb-3 text-left font-italic">Written By {book.authors}</p><hr />
