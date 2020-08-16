@@ -7,7 +7,7 @@ function Savedbook() {
                 <div className="row">
                     <p className="mt-3 mb-3 text-left font-weight-bold col-6">book.title</p>
                     <div className="mt-3 mb-3 col-6">
-                        <a className="btn mr-3 border" href="" target="_blank">View</a>
+                        <a className="btn mr-3 border" href="dummy" target="_blank">View</a>
                         <button className="btn mr-3">Delete</button>
                     </div>
                 </div>

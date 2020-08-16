@@ -3,7 +3,7 @@ import React, { createContext, useContext } from "react";
 const BookContext = createContext(
     {
         id: "",
-        authors: [],
+        authors: "",
         description: "",
         image: "",
         link: "",

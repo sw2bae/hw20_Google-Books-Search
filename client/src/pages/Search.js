@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from "react";
-import Nav from "../components/nav";
-import Main from "../components/main";
+import React, { useState } from "react";
 import Input from "../components/input";
 import Result from "../components/results";
-import Footer from "../components/footer";
 import API from "../utils/API";
 import { UserProvider } from "../utils/BookContext";
 

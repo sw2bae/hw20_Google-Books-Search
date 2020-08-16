@@ -1,18 +1,19 @@
 import React from "react";
 // import { Link, useLocation } from "react-router-dom";
 import { useUserContext } from "../utils/BookContext";
-
+import API from "../utils/API";
 function Result() {
     const books = useUserContext();
-    console.log(books);
+    // console.log(books);
 
     // const { id, authors, description, image, link, title } = useUserContext();
 
     function saveBtn(e) {
         e.preventDefault();
         const { value } = e.target;
-        // console.log(e.target.value);
-        console.log(books[value]);
+        const bookData = books[value];
+        console.log(bookData);
+        API.saveBook(bookData);
     }
 
     function renderResult() {
@@ -39,7 +40,7 @@ function Result() {
                                     <div className="row">
                                         <p className="mt-3 mb-3 text-left font-weight-bold col-6">{book.title}</p>
                                         <div className="mt-3 mb-3 col-6">
-                                            <a className="btn mr-3 border" href={book.link} target="_blank">View</a>
+                                            <a className="btn mr-3 border" href={book.link} target="_blank" rel="noopener noreferrer">View</a>
                                             <button className="btn mr-3" value={index} onClick={saveBtn}>Save</button>
                                         </div>
                                     </div>
