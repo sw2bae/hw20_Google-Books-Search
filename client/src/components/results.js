@@ -4,7 +4,7 @@ import { useUserContext } from "../utils/BookContext";
 import API from "../utils/API";
 function Result() {
     const books = useUserContext();
-    // console.log(books);
+    console.log(books);
 
     // const { id, authors, description, image, link, title } = useUserContext();
 
@@ -44,7 +44,7 @@ function Result() {
                                             <button className="btn mr-3" value={index} onClick={saveBtn}>Save</button>
                                         </div>
                                     </div>
-                                    <p className="mt-3 mb-3 text-left font-italic">Written By {book.authors}</p><hr />
+                                    <p className="mt-3 mb-3 text-left font-italic">Written By {book.authors.join(', ')}</p><hr />
                                 </div>
                                 <div className="row">
                                     <img className="col-3 mb-3" src={book.image} alt={index} />

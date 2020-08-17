@@ -26,7 +26,7 @@ function Footer() {
         <div>
             <div style={phantom} />
             <div style={style}>
-                Footer
+                “Take a good book to bed with you—books do not snore.”
             </div>
         </div>
     )
