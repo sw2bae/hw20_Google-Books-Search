@@ -31,7 +31,7 @@ function Result() {
         }
         else {
             return (
-                <div className="container card mt-3">
+                <div className="container card mt-3 mb-3">
                     <p className="mt-3 mb-3 text-left">Results : {books.length} Books</p>
                     {books.map((book, index) => {
                         return (
